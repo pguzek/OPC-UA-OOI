@@ -11,12 +11,14 @@ namespace UAUserInterfaceTypeEditorsTestProject
 	{
 		public float Number { get; set; }
 		public string Text { get; set; }
-		public Stopwatch Watch { get; set; }
+		public TestInput InfLoop { get; private set; }
+		public Stopwatch Watch { get; private set; }
 
 		public TestInput()
 		{
 			Number = 15;
 			Text = "Puszek";
+			InfLoop = this;
 			Watch = new Stopwatch();
 			Watch.Start();
 		}

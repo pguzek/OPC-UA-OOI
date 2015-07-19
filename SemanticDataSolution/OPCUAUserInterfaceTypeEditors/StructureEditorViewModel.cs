@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace UAOOI.SemanticData.TypeEditors
@@ -12,34 +14,30 @@ namespace UAOOI.SemanticData.TypeEditors
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		//-------------------------------------------------------------------------------
-
-		public static object ReflectedObject { get; set; }
-
-		//-------------------------------------------------------------------------------
-
-		public int ReflectionLevel { get; set; }
-
-		//-------------------------------------------------------------------------------
-
-		public IEnumerable<Data> TreeItemsSource { get; private set; }
+		public void NotifyPropertyChanged(string propertyName)
+		{
+			if(PropertyChanged != null)
+			{
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
 
 		//-------------------------------------------------------------------------------
 
-		public ICommand ReflectCommand { get; private set; }
+		public ObservableCollection<TreeNode> TreeItemsSource { get; private set; }
+
+		//-------------------------------------------------------------------------------
+
+		public StructureEditorModel Model { get; private set; }
 
 		//-------------------------------------------------------------------------------
 
 		public StructureEditorViewModel()
 		{
-			ReflectionLevel = 3;
-
-			ReflectCommand = new CommandWrapper(param =>
-			{
-				TreeItemsSource = Reflector.ReflectObjectProperties(ReflectedObject, ReflectionLevel);
-				PropertyChanged(this, new PropertyChangedEventArgs("TreeItemsSource"));
-
-			}, param => true);
+			Model = StructureEditorModel.GetInstance();
+			TreeItemsSource = new ObservableCollection<TreeNode>();
+			TreeItemsSource.Add(new TreeNode(Model.Root));
+			NotifyPropertyChanged("TreeItemsSource");
 		}
 	}
 }

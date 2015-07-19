@@ -15,14 +15,15 @@ using System.Windows.Shapes;
 
 namespace UAOOI.SemanticData.TypeEditors
 {
-  /// <summary>
-  /// Interaction logic for StructureEditor.xaml
-  /// </summary>
-  public partial class StructureEditor : UserControl
-  {
-    public StructureEditor()
-    {
-      InitializeComponent();
-    }
-  }
+	/// <summary>
+	/// Interaction logic for StructureEditor.xaml
+	/// </summary>
+	public partial class StructureEditor : UserControl
+	{
+		public StructureEditor()
+		{
+			DataContext = new StructureEditorViewModel();
+			InitializeComponent();
+		}
+	}
 }

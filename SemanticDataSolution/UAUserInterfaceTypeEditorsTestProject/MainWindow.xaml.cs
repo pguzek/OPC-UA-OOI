@@ -22,8 +22,9 @@ namespace UAUserInterfaceTypeEditorsTestProject
 	{
 		public MainWindow()
 		{
+			UAOOI.SemanticData.TypeEditors.StructureEditorModel.ReflectedObject = new TestInput();
 			InitializeComponent();
-			UAOOI.SemanticData.TypeEditors.StructureEditorViewModel.ReflectedObject = new TestInput();
+			//UAOOI.SemanticData.TypeEditors.StructureEditorModel.ReflectedObject = new TestInput();
 		}
 	}
 }

@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -47,14 +48,16 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\CommandWrapper.cs" />
+    <Compile Include="ModelNode.cs" />
+    <Compile Include="CommandWrapper.cs" />
+    <Compile Include="NegationConverter.cs" />
+    <Compile Include="StructureEditorModel.cs" />
     <Compile Include="StructureEditorViewModel.cs" />
+    <Compile Include="TreeNode.cs" />
     <Page Include="StructureEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="Model\Data.cs" />
-    <Compile Include="Model\Reflector.cs" />
     <Compile Include="StructureEditor.xaml.cs">
       <DependentUpon>StructureEditor.xaml</DependentUpon>
     </Compile>
